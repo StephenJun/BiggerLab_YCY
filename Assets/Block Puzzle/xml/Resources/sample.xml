@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<totalScore score= "" />
+	<currentScore score= "" />
+	<timerValue time= "" />
+	<currentMode modeId = "" />
+	<suggestedObject1 objectName = "" />
+	<suggestedObject2 objectName = "" />
+	<suggestedObject3 objectName = "" />
+</resources>

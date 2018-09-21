@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biggerlab_YangCY", "Biggerlab_YangCY.csproj", "{57E53155-EC8C-69CF-046C-544950EFC95E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E53155-EC8C-69CF-046C-544950EFC95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E53155-EC8C-69CF-046C-544950EFC95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E53155-EC8C-69CF-046C-544950EFC95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E53155-EC8C-69CF-046C-544950EFC95E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
