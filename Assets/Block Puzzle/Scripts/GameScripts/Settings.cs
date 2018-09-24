@@ -142,7 +142,7 @@ public class Settings : MonoBehaviour
         {
             AudioManager.instance.PlayButtonClickSound();
             //Personal blog URL
-            Application.OpenURL("http://www.epilexgames.com");
+            Application.OpenURL("http://chunyiyang.strikingly.com");
         }
     }
 

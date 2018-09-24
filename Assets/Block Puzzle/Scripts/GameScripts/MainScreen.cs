@@ -42,17 +42,18 @@ public class MainScreen : MonoBehaviour
 		if (InputManager.instance.canInput ()) {
 			AudioManager.instance.PlayButtonClickSound ();
 			GamePlay.GamePlayMode = GameMode.classic;
-			if (PlayerPrefs.GetInt ("Classic_playedBefore", 0) == 0) 
-			{
-				GameController.instance.SpawnUIScreen ("Classic_HelpIntro", true);
-				PlayerPrefs.SetInt("Classic_playedBefore", 1);
-			}
-			else
-			{
-				GameController.instance.SpawnUIScreen ("GamePlay" + level, true);
-			}
+			//if (PlayerPrefs.GetInt ("Classic_playedBefore", 0) == 0) 
+			//{
+			//	GameController.instance.SpawnUIScreen ("Classic_HelpIntro", true);
+			//	PlayerPrefs.SetInt("Classic_playedBefore", 1);
+			//}
+			//else
+			//{
+				
+			//}
+            GameController.instance.SpawnUIScreen("GamePlay" + level, true);
 
-			DisableSettingsMenu();
+            DisableSettingsMenu();
 		}
 	}
 
