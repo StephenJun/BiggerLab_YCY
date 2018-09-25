@@ -52,7 +52,7 @@ public class BlockManager : MonoBehaviour
 				if (obj != null) 
 				{
 					obj.GetComponent<Image>().color = blockColor;
-                    BlockList.Add(new BlockData(blockId, i, j, false, obj.GetComponent<Image>()));
+                    BlockList.Add(new BlockData(blockId, i, j, false, obj.GetComponent<Image>(), -1));
                 }
 				blockId++;
 			}
@@ -73,7 +73,7 @@ public class BlockManager : MonoBehaviour
 			{
 				obj = transform.Find ("Block_" + i + "_" + j);
 				if (obj != null) {
-					BlockList.Add (new BlockData (blockId, i, j, false, obj.GetComponent<Image> ()));
+					BlockList.Add (new BlockData (blockId, i, j, false, obj.GetComponent<Image> (), -1));
 					obj.GetComponent<Image> ().color = blockColor;
                     obj.GetComponent<Image>().sprite = blockSprite;
 					blockId++;
@@ -112,13 +112,15 @@ public class BlockData
 	public int columnId;
 	public bool isFilled;
 	public Image block;
+    public int numOfBlockTray;
 
-	public BlockData (int blockId, int rowId, int columnId, bool isFilled,Image block)
+    public BlockData (int blockId, int rowId, int columnId, bool isFilled,Image block, int numOfBlockTray)
 	{
 		this.blockId = blockId;
 		this.rowId = rowId;
 		this.columnId = columnId;
 		this.isFilled = isFilled;
 		this.block = block;
+        this.numOfBlockTray = numOfBlockTray;
 	}	
 }

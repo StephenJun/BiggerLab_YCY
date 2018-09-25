@@ -53,7 +53,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 
 	bool isGamePaused = false;
 	public List<Color> ThemeColors;
-	public Button btnUndo;
+	//public Button btnUndo;
 
 
 	/// <summary>
@@ -100,6 +100,39 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 		AudioManager.instance.PlayButtonClickSound ();
 	}
 
+    IEnumerator CheckNearSameBlock(int chkNum)
+    {
+        List<BlockData> BlocksToDestroy = new List<BlockData>();
+        foreach(var block in BlockManager.instance.BlockList)
+        {
+            if(block.numOfBlockTray == chkNum)
+            {
+                BlocksToDestroy.Add(block);
+            }
+        }
+        if(BlocksToDestroy.Count > 0)
+        {
+            foreach (BlockData d in BlocksToDestroy)
+            {
+                GameObject currentBlock = (GameObject)Instantiate(sampleBlock.gameObject);
+                currentBlock.transform.SetParent(sampleBlock.parent);
+                currentBlock.transform.localScale = Vector3.one;
+                currentBlock.GetComponent<RectTransform>().position = d.block.GetComponent<RectTransform>().position;
+                currentBlock.GetComponent<Image>().color = d.block.color;
+                currentBlock.GetComponent<Image>().sprite = d.block.sprite;
+                currentBlock.gameObject.SetActive(true);
+                d.isFilled = false;
+                d.block.color = blockColor;
+                d.block.sprite = blockImage;
+                d.numOfBlockTray = -1;
+
+                yield return new WaitForSeconds(0.01F);
+            }
+            BlockTrayManager.instance.RespawnBlockAfterDelete(chkNum);
+        }
+
+    }
+
     #region IPointerDownHandler implementation
 
     /// <summary>
@@ -111,6 +144,23 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
         if (eventData.pointerCurrentRaycast.gameObject != null)
         {
             GameObject clickedObject = eventData.pointerCurrentRaycast.gameObject;
+            if (clickedObject.name.Contains("Block_"))
+            {
+                string[] id = clickedObject.name.Split('_');
+                if (id.Length >= 3)
+                {
+                    int rowId = id[1].TryParseInt(-1);
+                    int columnId = id[2].TryParseInt(-1);
+                    if (rowId != -1 && columnId != -1)
+                    {
+                        BlockData data = BlockManager.instance.BlockList.Find(o => o.rowId == rowId && o.columnId == columnId);
+                        if(data != null)
+                        {
+                            StartCoroutine(CheckNearSameBlock(data.numOfBlockTray));
+                        }
+                    }
+                }
+            }
             if (clickedObject.name.Contains("objcontainer"))
             {
                 if (clickedObject.transform.childCount > 0)
@@ -254,6 +304,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 						if (!data.isFilled) {
 							//Color ColorToSet = SelectedObject.GetComponent<Block> ().ObjectDetails.blockColor;
                             Sprite SpriteToSet = SelectedObject.GetComponent<Block>().ObjectDetails.blockSprite;
+                            int numOfOrder = int.Parse(SelectedObject.transform.parent.name.Replace("objcontainer", "")) - 1;
 							List<BlockShapeDetails> ObjectBlocks = SelectedObject.GetComponent<Block> ().ObjectDetails.objectBlocksids;
 							SelectedObject.transform.position = data.block.transform.position;
 							foreach (BlockShapeDetails s  in ObjectBlocks) {
@@ -262,6 +313,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 									//chkBlock.block.color = ColorToSet;
                                     chkBlock.block.sprite = SpriteToSet;
 									chkBlock.isFilled = true;
+                                    chkBlock.numOfBlockTray = numOfOrder;
 								}
 							}
 							AudioManager.instance.PlayOneShotClip (SFX_BlockPlace);                          
@@ -351,9 +403,15 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 					yield return new WaitForSeconds (0.01F);
 				}
 			}
-            StartCoroutine(LoadGameVictory());
+            if(levelNum == 5)
+            {
+                StartCoroutine(LoadGameOver("More levels to expect, please wait!!"));
+            }
+            else
+            {
+                StartCoroutine(LoadGameVictory());
+            }
         }
-
 	}
 
 	/// <summary>

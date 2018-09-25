@@ -110,6 +110,16 @@ public class BlockTrayManager : MonoBehaviour
         }
 	}
 
+    public void RespawnBlockAfterDelete(int index)
+    {
+        GameObject obj = null;
+        obj = (GameObject)Instantiate(blockList[index].gameObject);
+        obj.transform.SetParent(blockContainer.GetChild(index).transform);
+        obj.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+        obj.transform.localScale = new Vector3(0.4f, 0.4f, 1);
+        obj.gameObject.SetActive(true);
+    }
+
 	/// <summary>
 	/// Shuffles the generic list. 重新排序算法。
 	/// </summary>
