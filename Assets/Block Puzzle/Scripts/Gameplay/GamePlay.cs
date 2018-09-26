@@ -403,7 +403,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 					yield return new WaitForSeconds (0.01F);
 				}
 			}
-            if(levelNum == 5)
+            if(levelNum == 6)
             {
                 StartCoroutine(LoadGameOver("More levels to expect, please wait!!"));
             }

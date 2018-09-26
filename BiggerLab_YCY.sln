@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggerLab_YCY", "BiggerLab_YCY.csproj", "{F31621BC-4CB0-A68B-0432-1AF351134236}"
 EndProject
 Global

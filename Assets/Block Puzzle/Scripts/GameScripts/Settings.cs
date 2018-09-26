@@ -8,15 +8,40 @@ using System.Collections;
 public class Settings : MonoBehaviour
 {
 	public Image MenuButtonImage;
-	public Sprite MenuOpenedSprite;
-	public Sprite MenuClosedSprite;
 	public GameObject SettingContent;
+    public Sprite[] OpenedSprites;
+    public Sprite[] ClosedSprites;
 	bool isMenuOpened = false;
 
-	/// <summary>
-	/// Raises the menu button pressed event.
-	/// </summary>
-	public void OnMenuButtonPressed ()
+    private Sprite MenuOpenedSprite;
+    private Sprite MenuClosedSprite;
+
+    void OnEnable()
+    {
+        ThemeManager.OnThemeChangedEvent += OnThemeChangedEvent;
+        bool isDarkTheme = PlayerPrefs.GetInt("isDarkTheme", ((ThemeManager.instance.isDarkTheme == true ? 0 : 1))) == 0 ? true : false;
+        OnThemeChangedEvent(isDarkTheme);
+        MenuButtonImage.sprite = (isDarkTheme) ? ClosedSprites[0] : ClosedSprites[1];
+    }
+
+    void OnDisable()
+    {
+        ThemeManager.OnThemeChangedEvent -= OnThemeChangedEvent;
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
+		GamePlay.instance.TogglePauseGame(false);
+#endif
+    }
+
+    void OnThemeChangedEvent(bool isDarkTheme)
+    {
+        MenuClosedSprite = (isDarkTheme) ? ClosedSprites[0] : ClosedSprites[1];
+        MenuOpenedSprite = (isDarkTheme) ? OpenedSprites[0] : OpenedSprites[1];
+    }
+
+    /// <summary>
+    /// Raises the menu button pressed event.
+    /// </summary>
+    public void OnMenuButtonPressed ()
 	{
 		if (InputManager.instance.canInput (1F)) {
 			AudioManager.instance.PlayButtonClickSound ();
@@ -146,15 +171,4 @@ public class Settings : MonoBehaviour
         }
     }
 
-    void OnEnable()
-	{
-	}
-
-	void OnDisable()
-	{
-		#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-		GamePlay.instance.TogglePauseGame(false);
-		#endif
-
-	}
 }

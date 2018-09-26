@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-	public Text txtScore;
-	public Text txtBestScore;
 	public Text txtGameOverReason;
 
 	GameMode mode;
