@@ -191,5 +191,5 @@ c0197f57c0cddc360e7c76fb77e743d6 Assembly-CSharp.dll:.GamePlay
 ac45666ef06732498a7989c01a1ff540 Assembly-CSharp.dll:.SettingsContent
 6fb7e1be716963a0c08757e17b011a9d Assembly-CSharp.dll:.CFX_Demo_RandomDirectionTranslate
 5c830f77b845687bbbedf65897c97c91 Assembly-CSharp.dll:.BlockManager
-1088ecdbffce7b8e686c67d9bb0a03e7 Assembly-CSharp.dll:.ThemeSpriteHandler
 992f42cb5414aff55aab05e55ed6f143 Assembly-CSharp.dll:.ThemeBGMHandler
+1088ecdbffce7b8e686c67d9bb0a03e7 Assembly-CSharp.dll:.ThemeSpriteHandler
