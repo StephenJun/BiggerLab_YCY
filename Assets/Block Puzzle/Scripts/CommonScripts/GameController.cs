@@ -149,7 +149,6 @@ public class GameController : MonoBehaviour
 		if (WindowStack != null && WindowStack.Count > 0) 
 		{
 			GameObject currentWindow = WindowStack.Peek ();
-            print(currentWindow.name);
 	
 			///if back button pressed from main screen, it will ask for quit-confirm.
 			if (currentWindow.name == "MainScreen") 

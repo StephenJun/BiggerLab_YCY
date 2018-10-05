@@ -45,7 +45,6 @@ public class Settings : MonoBehaviour
 	{
 		if (InputManager.instance.canInput (1F)) {
 			AudioManager.instance.PlayButtonClickSound ();
-            print(isMenuOpened);
 			if (!isMenuOpened) {
 				OpenMenu ();
 				return;

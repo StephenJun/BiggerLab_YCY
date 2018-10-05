@@ -271,15 +271,31 @@
     <Compile Include="Assets\Block Puzzle\Scripts\GameScripts\ToggleButton.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\InputManager\InputManager.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\GameBlockColors.cs" />
+    <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeBGMHandler.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeButtonHandler.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeCameraHandler.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeImageHandler.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeManager.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeSpriteHandler.cs" />
     <Compile Include="Assets\Block Puzzle\Scripts\Theme\ThemeTextHandler.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Block Puzzle\xml\Resources\sample.xml" />
+    <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
+    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
+    <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

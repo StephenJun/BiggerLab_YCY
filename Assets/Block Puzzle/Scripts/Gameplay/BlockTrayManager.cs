@@ -103,7 +103,7 @@ public class BlockTrayManager : MonoBehaviour
                 obj = (GameObject)Instantiate(blockList[i].gameObject);
                 obj.transform.SetParent(blockContainer.GetChild(i).transform);
                 obj.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
-                obj.transform.localScale = new Vector3(0.4f, 0.4f, 1);
+                obj.transform.localScale = new Vector3(0.5f, 0.5f, 1);
                 obj.gameObject.SetActive(true);
             }
             EGTween.MoveFrom(blockContainer.gameObject, EGTween.Hash("isLocal", true, "x", 50, "time", blockTransitionTime));
@@ -116,7 +116,7 @@ public class BlockTrayManager : MonoBehaviour
         obj = (GameObject)Instantiate(blockList[index].gameObject);
         obj.transform.SetParent(blockContainer.GetChild(index).transform);
         obj.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
-        obj.transform.localScale = new Vector3(0.4f, 0.4f, 1);
+        obj.transform.localScale = new Vector3(0.5f, 0.5f, 1);
         obj.gameObject.SetActive(true);
     }
 

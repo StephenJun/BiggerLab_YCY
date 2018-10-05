@@ -173,6 +173,9 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
                     Vector3 pos = Camera.main.ScreenToWorldPoint(eventData.position);
                     pos.z = SelectedObject.position.z;
                     SelectedObject.position = pos;
+                    //GameObject vfx = Resources.Load<GameObject>("VFX/CFX4 Hit Pow");
+                    //GameObject vfxClone = Instantiate(vfx);
+                    //vfxClone.transform.position = pos;
                 }
             }
         }
@@ -265,19 +268,22 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 					if (hit.collider.name.Contains ("Block_")) {
 						bool CanplaceObject = CheckForEmptyBlocks (hit.collider.transform);
 						if (CanplaceObject) {
-							StartCoroutine ("PlaceObject", hit.collider.transform);		
+							StartCoroutine ("PlaceObject", hit.collider.transform);
+                            GameObject vfx = Resources.Load<GameObject>("VFX/CFX_MagicPoof");
+                            GameObject vfxClone = Instantiate(vfx);
+                            vfxClone.transform.position = hit.transform.position;
 						} else {
-							SelectedObject.localScale = new Vector3 (0.4f, 0.4f, 1);
+							SelectedObject.localScale = new Vector3 (0.5f, 0.5f, 1);
 							SelectedObject.GetComponent<Block> ().ResetScaling ();
 							SelectedObject.anchoredPosition = Vector2.zero;
 						}
 					} else {
-						SelectedObject.localScale = new Vector3 (0.4f, 0.4f, 1);
+						SelectedObject.localScale = new Vector3 (0.5f, 0.5f, 1);
 						SelectedObject.GetComponent<Block> ().ResetScaling ();
 						SelectedObject.anchoredPosition = Vector2.zero;
 					}
 				} else {
-					SelectedObject.localScale = new Vector3 (0.4f, 0.4f, 1);
+					SelectedObject.localScale = new Vector3 (0.5f, 0.5f, 1);
 					SelectedObject.GetComponent<Block> ().ResetScaling ();
 					SelectedObject.anchoredPosition = Vector2.zero;
 				}
@@ -312,6 +318,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 								if (chkBlock != null && !chkBlock.isFilled) {
 									//chkBlock.block.color = ColorToSet;
                                     chkBlock.block.sprite = SpriteToSet;
+                                    chkBlock.block.color = Color.white;
 									chkBlock.isFilled = true;
                                     chkBlock.numOfBlockTray = numOfOrder;
 								}
@@ -328,7 +335,7 @@ public class GamePlay : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDra
 		SelectedObject = null;
 		yield return StartCoroutine( CheckForRowColumn());
 
-		CheckForRestObjectPlacing ();
+		//CheckForRestObjectPlacing ();
 		TotalMoves++;
 	}
 
